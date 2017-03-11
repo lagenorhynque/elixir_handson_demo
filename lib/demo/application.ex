@@ -20,17 +20,19 @@ defmodule Demo.Application do
     opts = [strategy: :one_for_one, name: Demo.Supervisor]
     Supervisor.start_link(children, opts)
   end
-end
 
-def start_cowboy do
-  routes = []
-  dispatch = :cowboy_router.compile([{:_, routes}])
-  opts = [{:port, 4000}]
-  env = %{dispatch: dispatch}
+  def start_cowboy do
+    routes = [
+      {"/", Demo.HelloHandler, []}
+    ]
+    dispatch = :cowboy_router.compile([{:_, routes}])
+    opts = [{:port, 4000}]
+    env = %{dispatch: dispatch}
 
-  {:ok, _pid} = :cowboy.start_clear(
-    :http,
-    10,
-    opts,
-    %{env: env})
+    {:ok, _pid} = :cowboy.start_clear(
+      :http,
+      10,
+      opts,
+      %{env: env})
+  end
 end
