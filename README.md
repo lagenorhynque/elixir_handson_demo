@@ -1,6 +1,6 @@
 # Demo
 
-cf. mix new elixir_handson_demo --sup --app demo
+cf. [ohr486/elixir_handson_demo: tokyo.ex elixir handson demo app](https://github.com/ohr486/elixir_handson_demo)
 
 ## Installation
 
