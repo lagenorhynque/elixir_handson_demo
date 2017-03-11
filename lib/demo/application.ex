@@ -12,6 +12,7 @@ defmodule Demo.Application do
     children = [
       # Starts a worker by calling: Demo.Worker.start_link(arg1, arg2, arg3)
       # worker(Demo.Worker, [arg1, arg2, arg3]),
+      worker(__MODULE__, [], function: :start_cowboy)
     ]
 
     # See http://elixir-lang.org/docs/stable/elixir/Supervisor.html
@@ -19,4 +20,7 @@ defmodule Demo.Application do
     opts = [strategy: :one_for_one, name: Demo.Supervisor]
     Supervisor.start_link(children, opts)
   end
+end
+
+def start_cowboy do
 end
